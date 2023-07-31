@@ -2,7 +2,7 @@
 
 ## Overview
 
-LoL-Dex is a platform for League of Legends enthusiasts to discover and explore champions in the game. Users can view detailed champion profiles, including abilities, tips, difficulty, and skins. Users can also search by name to find a particular champion. Authenticated users can save their favorite champions and leave comments for further interaction.
+LoL-Dex is a platform for League of Legends enthusiasts to discover and explore champions in the game. Users can view detailed champion profiles, including abilities, tips, difficulty, and skins. Users can also search by name to find a particular champion. Authenticated users can save their favorite champions and leave comments for further interaction. This application is being deployed at [LoL-Dex](https://lol-dex.onrender.com/).
 
 ## Features
 
@@ -30,8 +30,8 @@ LoL-Dex is a platform for League of Legends enthusiasts to discover and explore 
 
 This application uses the Riot Games API and Data Dragon for all the game-related data. The Riot Games API and Data Dragon provide detailed, up-to-date information about of League of Legends champions, which is central to the functionality of Lol-Dex.
 
-- https://developer.riotgames.com/
-- https://riot-api-libraries.readthedocs.io/en/latest/ddragon.html
+- [Riot API](https://developer.riotgames.com/)
+- [Data Dragon](https://riot-api-libraries.readthedocs.io/en/latest/ddragon.html)
 
 ## Project Proposal
 
