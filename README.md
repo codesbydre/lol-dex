@@ -1,7 +1,4 @@
 # League of Legends Champion Database (LoL-Dex)
-![image](https://github.com/codesbydre/lol-dex/assets/126096910/bc973ee1-cc08-4601-a140-fde5471baeb6)
-![image](https://github.com/codesbydre/lol-dex/assets/126096910/e7c69a8c-6501-45ca-a98b-4ef854832fd1)
-![image](https://github.com/codesbydre/lol-dex/assets/126096910/4b5876ae-f51b-4bb9-972f-f9ea22634b1e)
 
 ## Overview
 
@@ -28,6 +25,16 @@ LoL-Dex is a platform for League of Legends enthusiasts to discover and explore 
 - On a champion's profile, click "Favorite" to save the champion to your favorites list.
 
 - Leave comments on champion profiles to share your thoughts and strategies.
+
+## Screenshots
+### Homepage
+![image](https://github.com/codesbydre/lol-dex/assets/126096910/bc973ee1-cc08-4601-a140-fde5471baeb6)
+
+### Champion Page
+![image](https://github.com/codesbydre/lol-dex/assets/126096910/e7c69a8c-6501-45ca-a98b-4ef854832fd1)
+![image](https://github.com/codesbydre/lol-dex/assets/126096910/4b5876ae-f51b-4bb9-972f-f9ea22634b1e)
+
+###
 
 ## Additional Notes
 
