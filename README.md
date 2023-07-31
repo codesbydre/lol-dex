@@ -30,11 +30,9 @@ LoL-Dex is a platform for League of Legends enthusiasts to discover and explore 
 
 This application uses the Riot Games API and Data Dragon for all the game-related data. The Riot Games API and Data Dragon provide detailed, up-to-date information about of League of Legends champions, which is central to the functionality of Lol-Dex.
 
+- https://developer.riotgames.com/
+- https://riot-api-libraries.readthedocs.io/en/latest/ddragon.html
+
 ## Project Proposal
 
 https://docs.google.com/document/d/1udSs2KlplLguAdbstUS1ZMGb3liqcwD8j3x6RQblXZU/edit?usp=sharing
-
-## API
-
-- https://developer.riotgames.com/
-- https://riot-api-libraries.readthedocs.io/en/latest/ddragon.html
