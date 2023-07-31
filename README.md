@@ -34,6 +34,12 @@ LoL-Dex is a platform for League of Legends enthusiasts to discover and explore 
 ![image](https://github.com/codesbydre/lol-dex/assets/126096910/e7c69a8c-6501-45ca-a98b-4ef854832fd1)
 ![image](https://github.com/codesbydre/lol-dex/assets/126096910/7db4d98c-3f64-45e3-be65-ce24726c18b7)
 
+### Champion Tags
+![image](https://github.com/codesbydre/lol-dex/assets/126096910/efc26aa2-fec9-4404-9930-a1af21761d5d)
+
+### User Profile 
+![image](https://github.com/codesbydre/lol-dex/assets/126096910/ca109e1f-bf40-49d8-ace2-bb99342cce0f)
+
 
 ## Additional Notes
 
