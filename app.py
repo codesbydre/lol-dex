@@ -5,7 +5,7 @@ from werkzeug.utils import secure_filename
 from models import Champion, User, Favorite, Comment
 from forms import SignupForm, LoginForm, UserEditForm, CommentForm
 from riotwatcher import LolWatcher
-from api_keys import RIOT_API_KEY, SECRET_KEY
+from api_keys import RIOT_API_KEY, SECRET_KEY, DATABASE_URI
 import requests
 
 CURR_USER_KEY = "curr_user"
@@ -14,7 +14,7 @@ API_URL = "https://ddragon.leagueoflegends.com/cdn/13.14.1"
 lol_watcher = LolWatcher(RIOT_API_KEY)
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///lol-dex'
+app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URI
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = SECRET_KEY
 
