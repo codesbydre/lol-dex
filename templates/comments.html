@@ -1,0 +1,28 @@
+{% extends "base.html" %} {% block content %}
+<div class="container my-4 comment-container">
+  <h1 class="comment-header">User Comments</h1>
+
+  {% for comment in comments %}
+  <div class="card mt-3">
+    <div class="card-body">
+      <h5 class="card-title">{{ comment.user.username }}</h5>
+      <p class="card-text">{{ comment.content }}</p>
+      <p class="card-text">
+        <small class="text-muted">
+          Commented on
+          <a href="{{ url_for('champion', name=comment.champion.name) }}">
+            {{ comment.champion.name }}</a
+          >
+          at {{ comment.date.strftime('%Y-%m-%d %H:%M') }}
+        </small>
+      </p>
+    </div>
+  </div>
+  {% endfor %} {% if not comments %}
+  <div class="col-lg-12">
+    <h4>No comments found.</h4>
+    <p>Go add some comments <a href="/">here</a>.</p>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends 'base.html' %} {% block content %}
+
+<div id="searchContainer" class="search-container">
+  <form class="d-flex">
+    <input
+      class="form-control me-2 custom-search-input"
+      id="search-input"
+      type="search"
+      placeholder="Search by Champion"
+      aria-label="Search"
+    />
+    <button class="btn btn-dark search-btn" type="submit">Search</button>
+  </form>
+</div>
+
+{% set tag_list = ['all', 'Assassin', 'Fighter', 'Mage', 'Marksman', 'Support',
+'Tank'] %} {% set header_dict = {'all': 'All Champions', 'Assassin':
+'Assassins', 'Fighter': 'Fighters', 'Mage': 'Mages', 'Marksman': 'Marksmen',
+'Support': 'Supports', 'Tank': 'Tanks'} %} {% for tag in tag_list %} {% if tag
+== 'all' %} {% set current_champions = champions %} {% set current_id =
+'allChampionCarousel' %} {% else %} {% set current_champions =
+champions|selectattr('tags', 'contains', tag)|list %} {% set current_id = tag ~
+'Carousel' %} {% endif %} {% if current_champions %}
+<h2 class="champion-header">{{ header_dict[tag] }}</h2>
+<div id="{{ current_id }}" class="carousel slide" data-bs-ride="carousel">
+  <ol class="carousel-indicators">
+    {% for num in range(current_champions|length // 3 +
+    (current_champions|length % 3 > 0)) %}
+
+    <li
+      data-target="#{{ current_id }}"
+      data-slide-to="{{ num }}"
+      class="{{ 'active' if loop.first else '' }}"
+    ></li>
+    {% endfor %}
+  </ol>
+  <div class="carousel-inner row w-100 mx-auto">
+    {% for champion in current_champions %} {% if loop.index0 % 3 == 0 %}
+    <div
+      class="carousel-item col-md-4 {{ 'active' if loop.index0 == 0 else '' }}"
+    >
+      {% endif %}
+      <div class="card">
+        <img
+          class="card-img-top img-fluid"
+          src="{{ champion.image_url }}"
+          alt="{{ champion.name }}"
+        />
+        <div class="card-body">
+          <h5 class="card-title">
+            <a href="/champion/{{ champion.name }}">{{ champion.name }}</a>
+          </h5>
+          <p class="card-text">{{ champion.title }}</p>
+        </div>
+      </div>
+      {% if loop.index0 % 3 == 2 or loop.last %}
+    </div>
+    {% endif %} {% endfor %}
+  </div>
+  <button
+    class="carousel-control-prev"
+    type="button"
+    data-bs-target="#{{ current_id }}"
+    data-bs-slide="prev"
+  >
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button
+    class="carousel-control-next"
+    type="button"
+    data-bs-target="#{{ current_id }}"
+    data-bs-slide="next"
+  >
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+{% endif %} {% endfor %} {% endblock %}

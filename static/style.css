@@ -1,0 +1,395 @@
+/* Fonts */
+@font-face {
+  font-family: "Beaufort for LOL - Bold";
+  src: url("/static/fonts/BeaufortforLOL-Bold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Beaufort for LOL - Heavy Italic";
+  src: url("/static/fonts/BeaufortforLOL-HeavyItalic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Beaufort for LOL";
+  src: url("/static/fonts/BeaufortforLOL-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Spiegel TT";
+  src: url("/static/fonts/Spiegel_TT_Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ***************************************************************************************** */
+/* Navbar and General Style */
+.navbar-brand {
+  font-family: "Beaufort for LOL";
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+
+.navbar-nav {
+  text-transform: uppercase;
+  font-family: "Beaufort for LOL";
+}
+
+body {
+  padding-top: 5.5rem;
+  font-family: "Spiegel TT";
+}
+
+footer {
+  text-align: center;
+  font-size: 0.7rem;
+  padding-top: 50px;
+}
+
+.header-404,
+.btn-404 {
+  text-transform: uppercase;
+  font-family: "Beaufort for LOL - Bold";
+}
+/* **************************************************************************************** */
+/* Carousel Homepage Display */
+h2.champion-header {
+  font-family: "Beaufort for LOL - Heavy Italic";
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 2rem;
+}
+
+.carousel-inner .card-title a {
+  font-family: "Beaufort for LOL - Heavy Italic";
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 1.3rem;
+}
+
+.carousel-inner .card-text {
+  font-family: "Beaufort for LOL - Heavy Italic";
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.carousel-item {
+  margin-right: none !important;
+  padding: 0 5px !important;
+}
+.carousel-item.active,
+.carousel-item-next,
+.carousel-item-prev {
+  display: flex !important;
+}
+.carousel-inner {
+  overflow: visible;
+}
+
+.carousel-indicators li {
+  visibility: hidden;
+}
+
+#allChampionCarousel,
+#AssassinCarousel,
+#FighterCarousel,
+#MageCarousel,
+#MarksmanCarousel,
+#SupportCarousel,
+#TankCarousel {
+  width: 75%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 25px;
+}
+
+/* ************************************************************************************* */
+/* Favorites and Tag Page */
+
+.favorites-card .card-title a {
+  font-family: "Beaufort for LOL - Heavy Italic";
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+.favorites-card h4 {
+  font-family: "Beaufort for LOL - Heavy Italic";
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+h1.tag-header {
+  font-family: "Beaufort for LOL - Heavy Italic";
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 2rem;
+}
+
+.tag-card .card-title a {
+  font-family: "Beaufort for LOL - Heavy Italic";
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+.tag-card h4 {
+  font-family: "Beaufort for LOL - Heavy Italic";
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+/* ************************************************************************************* */
+/* Search Bar */
+#searchContainer {
+  width: 20%;
+  min-width: 31vw;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 15px;
+}
+
+.custom-search-input {
+  background-color: #272b30 !important;
+  color: #fff !important;
+  border: none !important;
+  font-family: "Beaufort for LOL";
+  text-transform: uppercase;
+}
+
+.custom-search-input::placeholder {
+  color: #aaa !important;
+}
+
+.btn-dark {
+  background-color: #375a7f;
+  border: none;
+}
+
+.ui-autocomplete {
+  background-color: #272b30;
+  color: #fff;
+  border-radius: 4px;
+  padding: 5px;
+  border: none;
+  font-family: "Beaufort for LOL";
+  text-transform: uppercase;
+}
+
+.ui-menu-item {
+  color: #fff;
+  padding: 2px 5px;
+}
+
+.ui-menu-item:hover {
+  background-color: #375a7f;
+}
+
+.search-btn {
+  font-family: "Beaufort for LOL - Bold";
+  text-transform: uppercase;
+}
+
+/* ************************************************************************************** */
+/* Champion page display */
+
+.champion-main-img {
+  min-width: 45vw;
+  height: auto;
+  padding-bottom: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.champion-main-img::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30%;
+  background: linear-gradient(
+    to top,
+    rgba(34, 34, 34, 1),
+    rgba(255, 255, 255, 0)
+  );
+}
+
+.champion-main-title {
+  font-family: "Beaufort for LOL - Heavy Italic";
+  text-transform: uppercase;
+  text-align: center;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  font-size: 1rem;
+}
+
+.champion-main-name {
+  font-family: "Beaufort for LOL - Heavy Italic";
+  text-transform: uppercase;
+  text-align: center;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+.difficulty-meter {
+  font-family: "Spiegel TT";
+  min-width: 40vw;
+  height: 20px;
+  border: 1px solid #000;
+  background: linear-gradient(
+    to right,
+    #cccccc,
+    /* light grey for easy 1-3 */ #999999,
+    /* medium grey for moderate 4-6 */ #333333
+      /* dark grey for difficult 7-10 */
+  );
+}
+
+.champion-description {
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+.more-info {
+  font-family: "Beaufort for LOL - Heavy Italic";
+  text-transform: uppercase;
+  font-size: 1.7rem;
+}
+
+.nav-pills .nav-link {
+  display: inline-block;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 6px;
+}
+
+.nav-pills .nav-link.active {
+  background-color: rgb(68, 68, 68);
+}
+
+.nav-pills .nav-link:active {
+  background-color: rgb(88, 88, 88);
+  transform: scale(0.95);
+}
+
+.ability-img {
+  width: 80px;
+  height: auto;
+}
+
+.ability-content {
+  padding-bottom: 10px;
+}
+
+.ability-name {
+  padding-bottom: 5px;
+  font-family: "Beaufort for LOL - Bold";
+  text-transform: uppercase;
+}
+
+.champion-btn {
+  font-family: "Beaufort for LOL - Bold";
+  text-transform: uppercase;
+  margin: 10px 0px 10px 0px;
+}
+
+.skins-header {
+  padding-top: 15px;
+}
+
+.skin-carousel {
+  width: 45vw;
+  object-fit: cover;
+  position: relative;
+}
+
+.skin-carousel img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.skin-wrapper {
+  position: relative;
+}
+
+.skin-wrapper .gradient-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 15%;
+  background: linear-gradient(
+    to top,
+    rgba(34, 34, 34, 1),
+    rgba(255, 255, 255, 0)
+  );
+  z-index: 2;
+}
+
+.skin-name {
+  font-family: "Beaufort for LOL - Heavy Italic";
+  font-size: 2rem;
+  text-transform: uppercase;
+  text-align: center;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* ************************************************************************************** */
+/* User displays */
+
+.comment-container,
+.profile-container,
+.user-forms {
+  width: 800px;
+  min-width: 50vw;
+}
+
+.profile-img-thumbnail {
+  margin-bottom: 10px;
+}
+
+.profile-link {
+  font-family: "Beaufort for LOL - Bold";
+  text-transform: uppercase;
+}
+
+.profile-headers-text,
+.comment-header {
+  font-family: "Beaufort for LOL - Bold";
+  text-transform: uppercase;
+}
+
+.form-label {
+  font-family: "Beaufort for LOL - Bold";
+  text-transform: uppercase;
+}
+
+.alert-container {
+  display: flex;
+  justify-content: center;
+}
+
+.alert {
+  font-family: "Beaufort for LOL - Bold";
+  text-transform: uppercase;
+  width: 500px;
+  min-width: 30vw;
+  padding: 10px;
+}

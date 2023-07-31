@@ -1,0 +1,276 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container champion-container">
+  <div class="row justify-content-center">
+    <div
+      class="col-lg-6 d-flex justify-content-center position-relative champion-main-img"
+    >
+      <img
+        class="img-fluid mx-auto d-block"
+        src="{{ champion.image_url }}"
+        alt="{{ champion.name }}"
+      />
+      <div
+        class="position-absolute bottom-0 start-50 translate-middle-x text-white p-2"
+      >
+        <h2 class="champion-main-title">{{ champion.title }}</h2>
+        <h1 class="champion-main-name">{{ champion.name }}</h1>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        {% if champion.difficulty %}
+        <div class="difficulty-meter">
+          <div class="progress">
+            <div
+              class="progress-bar {% if champion.difficulty <= 3 %} bg-success {% elif champion.difficulty <= 6 %} bg-warning {% else %} bg-danger {% endif %}"
+              role="progressbar"
+              style="width: {{ champion.difficulty * 10 }}%;"
+              aria-valuenow="{{ champion.difficulty * 10 }}"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            >
+              Difficulty: {{ champion.difficulty }}
+            </div>
+          </div>
+        </div>
+        {% endif %}
+
+        <p class="champion-description">{{ champion.description }}</p>
+        <h5 class="more-info">Abilities</h5>
+        {% set keys = ["Q", "W", "E", "R", "Passive"] %}
+        <ul class="nav nav-pills mb-3" id="abilitiesTab" role="tablist">
+          {% for ability in champion.abilities %}
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link {% if loop.index == 1 %} active {% endif %}"
+              id="{{ ability.name|slugify }}-tab"
+              data-bs-toggle="pill"
+              data-bs-target="#{{ ability.name|slugify }}"
+              type="button"
+              role="tab"
+              aria-controls="{{ ability.name|slugify }}"
+              aria-selected="{% if loop.index == 1 %}true{% else %}false{% endif %}"
+            >
+              <img
+                class="img-fluid ability-img"
+                src="{{ ability.image_url }}"
+                alt="{{ ability.name }}"
+              />
+            </button>
+          </li>
+          {% endfor %}
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link {% if champion.abilities|length == 0 %} active {% endif %}"
+              id="passive-tab"
+              data-bs-toggle="pill"
+              data-bs-target="#passive"
+              type="button"
+              role="tab"
+              aria-controls="passive"
+              aria-selected="true"
+            >
+              <img
+                class="img-fluid ability-img"
+                src="{{ champion.passive.image_url }}"
+                alt="{{ champion.passive.name }}"
+              />
+            </button>
+          </li>
+        </ul>
+
+        <div class="tab-content" id="abilitiesTabContent">
+          {% for ability in champion.abilities %}
+          <div
+            class="tab-pane fade {% if loop.index == 1 %} show active {% endif %} ability-content"
+            id="{{ ability.name|slugify }}"
+            role="tabpanel"
+            aria-labelledby="{{ ability.name|slugify }}-tab"
+          >
+            <h5 class="card-title ability-name">
+              {{ ability.name }}
+              <small class="text-muted">({{ keys[loop.index0] }})</small>
+            </h5>
+            <p class="card-text">{{ ability.description|safe }}</p>
+          </div>
+
+          {% endfor %}
+          <div
+            class="tab-pane fade show {% if champion.abilities|length == 0 %} active {% endif %} ability-content"
+            id="passive"
+            role="tabpanel"
+            aria-labelledby="passive-tab"
+          >
+            <h5 class="card-title ability-name">
+              {{ champion.passive.name }}
+              <small class="text-muted">(Passive)</small>
+            </h5>
+            <p class="card-text">{{ champion.passive.description|safe }}</p>
+          </div>
+        </div>
+
+        <p>
+          <br />
+          <small class="champion-tags"> Tags:</small> &nbsp; {% for tag in
+          champion.tags %}
+
+          <a
+            href="{{ url_for('tag', tag_name=tag) }}"
+            class="badge bg-info rounded-pill text-decoration-none me-2"
+            >{{ tag }}</a
+          >
+
+          {% endfor %}
+        </p>
+
+        <button
+          id="favorite-btn"
+          class="btn {% if is_favorited %} btn-warning {% else %} btn-primary {% endif %} champion-btn"
+          data-champion-id="{{ champion.id }}"
+        >
+          {% if is_favorited %} Unfavorite {% else %} Favorite {% endif %}
+        </button>
+        {% if champion.allytips or champion.enemytips %}
+        <button
+          class="btn btn-dark champion-btn"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#moreInfo"
+          aria-expanded="false"
+          aria-controls="moreInfo"
+        >
+          Tips
+        </button>
+
+        <div class="collapse" id="moreInfo">
+          <br />
+
+          {% if champion.allytips %}
+          <h5 class="more-info">Ally Tips</h5>
+          <ul>
+            {% for tip in champion.allytips %}
+            <li>{{ tip }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %} {% if champion.enemytips %}
+          <h5 class="more-info">Enemy Tips</h5>
+          <ul>
+            {% for tip in champion.enemytips %}
+            <li>{{ tip }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </div>
+        {% endif %}
+        <button
+          class="btn btn-light champion-btn"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#commentsSection"
+          aria-expanded="false"
+          aria-controls="commentsSection"
+        >
+          Comments ({{ champion.comments|length }})
+        </button>
+        <div class="collapse" id="commentsSection">
+          {% for comment in champion.comments %}
+          <div class="comment">
+            <p>
+              {{ comment.content }} -
+              <small
+                >Posted by
+                <a
+                  href="{{ url_for('profile', username=comment.user.username) }}"
+                  >{{ comment.user.username }}</a
+                >
+                on {{ comment.date.strftime('%Y-%m-%d') }}</small
+              >
+            </p>
+          </div>
+
+          {% endfor %} {% if g.user %}
+
+          <button
+            class="btn btn-success my-3 champion-btn"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#addCommentSection"
+            aria-expanded="false"
+            aria-controls="addCommentSection"
+          >
+            Add a Comment
+          </button>
+          <div class="collapse my-3" id="addCommentSection">
+            <div class="card card-body">
+              <form
+                method="POST"
+                action="{{ url_for('comment', name=champion.name) }}"
+                class="form-group"
+              >
+                {{ form.hidden_tag() }}
+                <label for="content" class="form-label"
+                  >{{ form.content.label }}</label
+                >
+                {{ form.content(class="form-control") }} {{
+                form.submit(class="btn btn-primary mt-2") }}
+              </form>
+            </div>
+          </div>
+          {% endif %}
+        </div>
+        <br />
+        <h5 class="more-info skins-header">Available Skins</h5>
+      </div>
+
+      <div class="col-lg-6 d-flex justify-content-center position-relative">
+        <div
+          id="championSkinsCarousel"
+          class="carousel slide"
+          data-bs-ride="carousel"
+        >
+          {% set first_displayed = false %}
+          <div class="carousel-inner">
+            {% for skin in champion.skins %} {% if skin.name != "default" %}
+            <div class="carousel-item skin-carousel">
+              <div class="skin-wrapper">
+                <img
+                  class="d-block"
+                  src="{{ skin.url }}"
+                  alt="{{ skin.name }}"
+                />
+                <div class="gradient-overlay"></div>
+              </div>
+
+              <div class="carousel-caption d-none d-md-block">
+                <h5 class="skin-name">{{ skin.name }}</h5>
+              </div>
+            </div>
+            {% endif %} {% endfor %}
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#championSkinsCarousel"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#championSkinsCarousel"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br />
+
+{% endblock %}

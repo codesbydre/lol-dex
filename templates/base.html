@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LoL Dex</title>
+
+    <link rel="stylesheet" href="/static/darkly.css" />
+    <script src="https://unpkg.com/jquery"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="/static/app.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    />
+    <link rel="stylesheet" href="/static/style.css" />
+
+    <link rel="shortcut icon" href="/static/favicon.ico" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">LoL Dex</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link" aria-current="page" href="/">Home</a>
+            {% if g.user %}
+            <a class="nav-link" href="/favorites">Favorites</a>
+            <a class="nav-link" href="/comments">Comments</a>
+            <a class="nav-link" href="/profile/{{ g.user.username }}">
+              <img
+                src="{{ g.user.image_url }}"
+                alt="Profile Picture"
+                style="height: 20px; width: 20px; border-radius: 50%"
+              />
+              Profile
+            </a>
+            <a class="nav-link" href="/logout">Log Out</a>
+            {% else %}
+            <a class="nav-link" href="/login">Log In</a>
+            <a class="nav-link" href="/signup">Sign Up</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="container alert-container">
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %} {% for category, message in messages %}
+      <div class="alert alert-{{ category }} custom-alert">{{ message }}</div>
+      {% endfor %} {% endif %} {% endwith %}
+    </div>
+    {% block content %}{% endblock %}
+    <footer>
+      <p>
+        <small>
+          This site is not endorsed by or affiliated with Riot Games, or its
+          licensors. League of Legends and Riot Games are trademarks or
+          registered trademarks of Riot Games, Inc. League of Legends ©
+          <a href="https://www.riotgames.com/">Riot Games, Inc.</a></small
+        >
+      </p>
+    </footer>
+  </body>
+</html>

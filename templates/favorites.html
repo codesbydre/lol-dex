@@ -1,0 +1,32 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container">
+  <div class="row">
+    {% if favorites|length > 0 %} {% for favorite in favorites %}
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card h-100">
+        <a href="{{ url_for('champion', name=favorite.champion.name) }}">
+          <img
+            class="card-img-top"
+            src="{{ favorite.champion.image_url }}"
+            alt="{{ favorite.champion.name }}"
+          />
+        </a>
+        <div class="card-body favorites-card">
+          <h4 class="card-title">
+            <a href="{{ url_for('champion', name=favorite.champion.name) }}"
+              >{{ favorite.champion.name }}</a
+            >
+          </h4>
+          <h4>{{ favorite.champion.title }}</h4>
+        </div>
+      </div>
+    </div>
+    {% endfor %} {% else %}
+    <div class="col-lg-12">
+      <h4>No favorites added yet.</h4>
+      <p>Go add some favorites <a href="/">here</a>.</p>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
